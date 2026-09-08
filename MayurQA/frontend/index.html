@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <title>MayurQA — Chat with your PDFs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span>✦</span></div>
+        <div>
+          <div class="brand-name">Mayur<span>QA</span></div>
+          <div class="brand-tagline">Your documents, understood.</div>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="upload-card" id="drop-zone" role="button" tabindex="0" aria-label="Upload PDF documents">
+          <div class="upload-icon" aria-hidden="true">↑</div>
+          <div class="upload-title">Add your documents</div>
+          <div class="upload-copy">Drop PDFs here or <span>browse files</span></div>
+          <input type="file" id="file-input" accept="application/pdf,.pdf" multiple />
+        </div>
+        <div id="upload-status" class="status-message" role="status" aria-live="polite"></div>
+
+        <div class="section-heading">
+          <span>Your library</span>
+          <span class="doc-count" id="doc-count">0</span>
+        </div>
+        <div id="doc-list" class="document-list">
+          <div class="empty-library">
+            <div class="empty-icon">▧</div>
+            <p>No documents yet</p>
+            <span>Upload a PDF to get started.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="status-dot"></div>
+        <span>Local workspace</span>
+        <span class="footer-version">v1.0</span>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Toggle menu">☰</button>
+          <div>
+            <div class="eyebrow">DOCUMENT INTELLIGENCE</div>
+            <h1>Ask your documents</h1>
+            <p id="scope-hint">Search across your entire library</p>
+          </div>
+        </div>
+        <button class="clear-button" id="clear-button" type="button"><span><i class="fa fa-trash" aria-hidden="true"></i>
+</span> Clear chat</button>
+      </header>
+
+      <section class="chat-area" id="chat" aria-live="polite">
+        <div id="welcome" class="welcome-state">
+          <div class="welcome-orbit"><div class="welcome-icon">✦</div></div>
+          <div class="welcome-kicker">WELCOME TO MayurQA</div>
+          <h2>Turn pages into answers.</h2>
+          <p>Upload one or more PDFs, then ask questions in plain English. MayurQA finds relevant passages and shows you exactly where every answer came from.</p>
+          <div class="suggestions" aria-label="Suggested questions">
+            <button class="suggestion-chip" type="button">Summarize this document</button>
+            <button class="suggestion-chip" type="button">What are the key points?</button>
+            <button class="suggestion-chip" type="button">List all important dates</button>
+            <button class="suggestion-chip" type="button">What is the main conclusion?</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="composer-wrap">
+        <div class="composer" id="composer">
+          <textarea id="question" rows="1" placeholder="Ask anything about your documents…" aria-label="Ask a question"></textarea>
+          <button id="send-btn" class="send-button" type="button" aria-label="Send question" title="Send question">↑</button>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
