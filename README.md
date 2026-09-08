@@ -19,7 +19,6 @@
 11. [Troubleshooting](#troubleshooting)
 12. [How Each File Works](#how-each-file-works)
 13. [Key Concepts for Interviews](#key-concepts-for-interviews)
-14. [Future Improvements](#future-improvements)
 
 ---
 
@@ -47,7 +46,7 @@ This app uses a technique called **RAG — Retrieval-Augmented Generation**. Her
 [1] Text Extraction       ← PyMuPDF reads raw text from each page
     │
     ▼
-[2] Chunking              ← Text is split into ~500-word overlapping chunks
+[2] Chunking              ← Text is split into ~300-word overlapping chunks
     │
     ▼
 [3] Embedding             ← Each chunk is converted into a vector (list of numbers)
@@ -431,7 +430,7 @@ Lists all Python packages with pinned versions so the project works the same on 
 
 ---
 
-## Key Concepts for Interviews
+## Key Concepts
 
 These are the terms you should know if asked about this project:
 
@@ -445,7 +444,10 @@ A way of representing text as a list of numbers (a vector) where similar meaning
 A special database optimized for storing and searching vectors. Instead of exact matching (like SQL), it finds the *most similar* vectors — which corresponds to the *most semantically relevant* text chunks.
 
 **Chunking**
-PDFs can be huge. We split them into ~500-word chunks because: (a) LLMs have limited context windows, and (b) smaller pieces make retrieval more precise. Overlapping chunks (`overlap=100`) prevent losing context at chunk boundaries.
+PDFs can be huge. We split them into ~300-word chunks because: (a) LLMs have limited context windows, and (b) smaller pieces make retrieval more precise. Overlapping chunks (`overlap=60`) prevent losing context at chunk boundaries.
+
+**Local LLM (Ollama)**
+Running the AI model on your own machine instead of calling a cloud API. Advantages: free, private, works offline. Disadvantage: slower and less powerful than GPT-4.
 
 **Local LLM (Ollama)**
 Running the AI model on your own machine instead of calling a cloud API. Advantages: free, private, works offline. Disadvantage: slower and less powerful than GPT-4.
@@ -454,18 +456,5 @@ Running the AI model on your own machine instead of calling a cloud API. Advanta
 A modern Python web framework for building REST APIs. Much faster to write than Flask, and automatically generates interactive documentation at `/docs`.
 
 ---
-
-## Future Improvements
-
-Here are features you could add to make this project even more impressive:
-
-- [ ] **Multi-format support** — accept .docx, .txt, .pptx files, not just PDFs
-- [ ] **Conversation memory** — remember previous questions in the same session
-- [ ] **Streaming responses** — show the answer word-by-word as it's generated (like ChatGPT)
-- [ ] **Better chunking** — split by paragraphs/sections instead of word count
-- [ ] **Highlighted sources** — show the exact sentence in the PDF that answered the question
-- [ ] **Login system** — each user gets their own document library
-- [ ] **Docker setup** — one command to run the whole app anywhere
-- [ ] **Re-ranking** — use a second model to re-score retrieved chunks for better accuracy
 
 ---
